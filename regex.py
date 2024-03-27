@@ -12,6 +12,16 @@ dir_list="Recent Saved Games Searches SendTo Start Menu Templates vikeos vikesh"
 pattern = '[vik]+'
 print(re.findall(pattern,dir_list))
 
+print("*******************match()***************************search()*********************findall()********************findfilter()**************")
+# match():-Determine if the RE matches at the beginning of the string.
+
+# search():-Scan through a string, looking for any location where this RE matches.
+
+# findall():- Find all substrings where the RE matches, and returns them as a list.
+
+# finditer():-Find all substrings where the RE matches, and returns them as an iterator
+
+print("*********************************************************************************************************************************************")
 #  Since the match() method only checks if the RE matches at the start of a string, start() will always be zero. 
 # However, the search() method of patterns scans through the string
 import re
@@ -135,7 +145,7 @@ pattern = r"one\Z" #return None becuase .it is multiline so first line end with 
 matches = re.findall(pattern, text, re.MULTILINE)
 print("Matches", matches)
 
-print("*************************************************\Z****************************************************")
+print("*************************************************\ b****************************************************")
 # it finds the words character between non-word character.word character is [a-z,A-Z,and digit].non-word char
 # include space(" "),tab("\t"),new line(\n) etc.Period (.), comma (,), colon (:), semicolon (;), exclamation mark (!), question mark (?), etc.
 # Parentheses (()), square brackets ([]), braces ({}), angle brackets (< >), quotation marks (' " ), etc.
@@ -151,4 +161,58 @@ print(p.search('the declassified algorithm'))#in this class is between (de)class
 print(p.search('one subclass is')) #class is between (sub)class(" ") sub is word char so it will return none
 
 # \B Another zero-width assertion, this is the opposite of \b, only matching when the current position is not at a word boundary
- 
+
+print('*************************************************\w*********************************************************************************')
+
+# Matches any alphanumeric character; this is equivalent to the class [a-zA-Z0-9_]
+p = re.compile('\w')
+result=p.findall('vikesh kumar das')#if we use finall method it will match all char from [a-zA-Z0-9_]
+print(result)
+
+result=p.search('vikesh kumar das')#if we use search() method it will match first char 'v'
+print(result)
+
+result=p.match('vikesh kumar das')#if we use search() method it will match first char 'v'
+print(result)
+
+print('*****************************************************Grouping*************************************************************************')
+
+# (ab)* will match zero or more repetitions of ab becuae ab is in group
+p = re.compile('(ab)*')
+print(p.match('ababababab').span())
+
+
+# Groups indicated with '(', ')' also capture the starting and ending index of
+# the text that they match; this can be retrieved by passing an argument to group(), start(), end(), and span()
+p = re.compile('(a)b')
+m = p.match('ab')
+print(m.group())
+print(m.group(0))
+
+# Sub group
+p = re.compile('(a(b)c)d')
+m = p.match('abcd')
+# there whill be 3 group becuase there is two parenthesis
+print(m.group(0))
+print(m.group(1))
+print(m.group(2))
+# or
+print(m.group(0,1,2))
+# The groups() method returns a tuple containing the strings for all the subgroups, from 1 up to however many there are.
+print("groups()",m.groups())
+
+print('****************************************************** \1 in subgroup ***************************************************************')
+p = re.compile(r'\b(\w+)\s+\1\b')
+# The regex engine starts at the beginning of the string.
+# \b(\w+) matches the word "Paris".it start match from (w+) because it is in lowest level of grouping
+# \s+ matches the space after "Paris".
+# \1 is a backreference, which tries to match the exact text captured by the first capturing group, which is "Paris". So, it tries to find another occurrence of "Paris".
+# The regex engine fails to find another occurrence of "Paris" immediately after the space.
+# The regex engine continues to search.
+# It matches the next occurrence of "the".
+# \s+ matches the space after "the".
+# \1 tries to find another occurrence of "the" immediately after the space.
+# It successfully finds another occurrence of "the".
+# The regex engine matches the entire pattern "the the".
+# The matched substring is returned as the result.
+print(p.search('Paris in the the spring').group())
