@@ -252,3 +252,61 @@ for match in matches:
 
 # in above exmaple i extract phone number on the basis of name of the user so name is non-capturing grou because it will not be in result.
 # phon number will be in result
+
+print('****************************************************** Positive lookahead assertion ***************************************************************')
+
+
+print('*******************************************************************split()*****************************************************************************')
+# In regular expressions, the split() method is used to split a string into a list of substrings based on a specified pattern.
+# It's similar to the split() method in Python strings, but it splits the string using a regular expression pattern as the delimiter
+
+text = "apple, banana, cherry, date"
+pattern = r','  # We define a regular expression pattern r',', which matches a comma
+
+result = re.split(pattern, text)
+
+print(result)
+
+
+# Second Exmpale 
+p = re.compile(r'\W+') # matches one or more non-word characters
+
+result = p.split('This is a test, short and sweet, of split().')
+
+print(result)
+
+
+# Some time we also what to knwo what delimeter was in expression delimeter like ',','.','{}','()' etc
+
+p = re.compile(r'\W+')
+p2 = re.compile(r'(\W+)') #seperating delimeter as well
+print(p.split('This... is a () test.'))
+
+print(p2.split('This... is a () test.'))
+
+print('*******************************************************************Search and Replace*****************************************************************************')
+# in seach and replace find all the matches for a pattern, and replace them with a different string.
+# The sub() method takes a replacement value, which can be either a string or a function, and the string to be processed
+
+# .sub(replacement, string[, count=0])->Returns the string obtained by replacing the leftmost non-overlapping occurrences 
+# of the RE in string by the replacement replacement. If the pattern isn’t found, string is returned unchanged
+# The optional argument count is the maximum number of pattern occurrences to be replaced; count must be a non-negative integer.
+# The default value of 0 means to replace all occurrences
+
+# replace all occurence
+p = re.compile('(blue|white|red)')
+res=p.sub('colour', 'blue socks and red shoes')
+print(res)
+
+# replace only first occurence
+result=p.sub('colour', 'blue socks and red shoes', count=1)
+print(result)
+
+# The subn() method does the same work, but returns a 2-tuple containing the new string value and the number of replacements that were performed:
+res=p.subn('colour', 'blue socks and red shoes')
+print(res)
+
+print("********************************************************************************************************************************************************")
+# The match() function only checks if the RE matches at the beginning of the string while search() will scan forward through
+# the string for a match. It’s important to keep this distinction in mind. Remember, match() will only report a successful
+# match which will start at 0; if the match wouldn’t start at zero, match() will not report it.
