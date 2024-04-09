@@ -216,3 +216,39 @@ p = re.compile(r'\b(\w+)\s+\1\b')
 # The regex engine matches the entire pattern "the the".
 # The matched substring is returned as the result.
 print(p.search('Paris in the the spring').group())
+
+print('****************************************************** Name group ***************************************************************')
+# A named group is a feature in regular expressions that lets you assign a name to a capturing group. Normally, when you use parentheses ( )
+# in a regular expression pattern, it creates a capturing group. This group captures and stores the substring of the input text that matches
+# the pattern inside the parentheses. Named groups allow you to give a name to these capturing groups,so that letter you can access that matched
+# expression by it's name
+
+# Named groups are defined using the syntax (?P<name>...)where name is the name you want to assign to the group, and ... is the pattern you want to match
+# The ?P<name> part indigates that this is named group ,<name> is identifier(or name) by which you can access matched word letter
+
+# for exmaple
+p = re.compile(r'(?P<word>\b\w+\b)')  #regular expression , word is name of the group ,\b is word break \w+ mathced one or more word character and then again word break
+m = p.search( '(((( Lots of punctuation )))' )
+print(m.group('word')) #we are accessing atched patter by its name 
+
+# dditionally, you can retrieve named groups as a dictionary with groupdict():
+m = re.match(r'(?P<last>\w+)', 'Jane Doe')
+print(m.groupdict())
+
+print('****************************************************** Non-Capturing group ***************************************************************')
+# Sometime we want to find a pattern on the basis of other patter .for exaple you want to fine patter A on the basis of patte B but you don not 
+# want to include patter B in result that is non capturing group basically we are not caputuring patte B we just taking hlep from B to find A.
+
+
+text = "Mr. John Doe (123) 456-7890 ,  Mr. vikesh das (123) 456-7890   , (123) 456-7890"
+
+pattern = r'(?:Mr\. \w+ \w+) (\(\d{3}\) \d{3}-\d{4})'
+
+matches = re.findall(pattern, text)
+
+print("Non Capturing group")
+for match in matches:
+    print(match)
+
+# in above exmaple i extract phone number on the basis of name of the user so name is non-capturing grou because it will not be in result.
+# phon number will be in result
