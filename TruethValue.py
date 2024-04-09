@@ -238,3 +238,138 @@ print('x' not in str)
 
 # by default (ns) does not work with user defined class .if you want to use (in) in user defined class you have to 
 # write __contains__() method
+
+print("***************************************************************Numeric Types*****************************************************************************")
+# There are three distinct numeric types: integers, floating point numbers, and complex numbers
+# In addition, Booleans are a subtype of integers
+# Integers have unlimited precision.
+# Complex numbers have a real and imaginary part, which are each a floating point number.To extract these parts from a complex number z, use z.real and z.imag
+
+# below Operations works on all numeric type except complex
+
+# sum 
+int_num_1=5
+int_num_2=3
+
+float_num_1=2.6
+float_num_2=4.3
+
+res=int_num_1+int_num_2
+print(res)
+
+res=float_num_1+float_num_2
+print(res)
+
+# subtract
+int_num_1=5
+int_num_2=3
+
+float_num_1=2.6
+float_num_2=4.3
+
+res=int_num_1-int_num_2
+print(res)
+
+res=float_num_1-float_num_2
+print(res)
+
+# product
+int_num_1=5
+int_num_2=3
+
+float_num_1=2.6
+float_num_2=4.3
+
+res=int_num_1*int_num_2
+print(res)
+
+res=float_num_1*float_num_2
+print(res)
+
+# quotient
+int_num_1=6
+int_num_2=3
+
+float_num_1=2.6
+float_num_2=4.3
+
+div_res=int_num_1/int_num_2
+print(div_res)
+
+res=float_num_1/float_num_2
+print(res)
+
+
+# floored
+int_num_1=6
+int_num_2=3
+
+float_num_1=2.6
+float_num_2=4.3
+
+div_res=int_num_1//int_num_2
+print(div_res)
+
+res=float_num_1//float_num_2
+print(res)
+
+# remainder
+int_num_1=6
+int_num_2=3
+
+float_num_1=2.6
+float_num_2=4.3
+
+div_res=int_num_1%int_num_2
+print(div_res)
+
+res=float_num_1%float_num_2
+print(res)
+
+# x converted to integer
+print(int(2.3))
+
+#converted to floating point
+print(float(5))
+
+# generate imaginary number
+img=complex()
+print(img)
+
+img=complex(2.3,5.j)
+print(img)
+
+
+#  The complex conjugate of a complex number a+bi  is given by a-bi where a and b are real numbers and 
+# i is the imaginary unit
+
+c = 3 + 4j  # Define a complex number
+conj_c = c.conjugate()  # Compute its complex conjugate
+
+print(conj_c)
+
+# The divmod(x, y) function in Python returns a tuple containing the quotient and remainder of dividing x by y
+# touple contains (x // y, x % y)
+result = divmod(10, 3)
+print(result)
+
+# power of x,y
+print("power",pow(2,3))
+# or
+print("power",2 ** 3)
+
+# In division
+# If both operands are of type int, the result of integer division will be of type int.
+# If one or both operands are of type float, the result of integer division will be promoted to type float.
+# above case does not match with complex number 
+c1 = 3 + 4j
+c2 = 2 - 1j
+# Convert complex numbers to floats using abs() and perform division-like operation
+result = c1 / c2
+print("result",result)
+
+# float also accepts the strings “nan” and “inf” with an optional prefix “+” or “-” for Not a Number (NaN) and positive or negative infinity
+float_number="NaN"
+print(type(float(float_number)))
+
+print(float(float_number))
