@@ -369,7 +369,24 @@ result = c1 / c2
 print("result",result)
 
 # float also accepts the strings “nan” and “inf” with an optional prefix “+” or “-” for Not a Number (NaN) and positive or negative infinity
-float_number="NaN"
-print(type(float(float_number)))
+float_number="vikesh"
+try:
+    print(float(float_number))#it will give error because you are trying to convert string to float which is not possible
+except ValueError as e:
+    print(e)
+# But in python there are few string which are able to convert into flaot like "NaN","inf","+","-".
+nan_float = float("nan")        #Not a number
+print(nan_float)
+inf_float = float("inf")        #infinity
+print(inf_float)
+neg_inf_float = float("-inf")   #negetive infinity
+print(neg_inf_float)
+pos_nan_float = float("+nan")   #positive not a numer
+print(pos_nan_float)
+neg_nan_float = float("-nan")   #negetive not a number
+print(neg_nan_float)
 
-print(float(float_number))
+# Python defines pow(0, 0) and 0 ** 0 to be 1, as is common for programming languages
+# The numeric literals accepted include the digits 0 to 9 or any Unicode equivalent (code points with the Nd property).
+
+

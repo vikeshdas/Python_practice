@@ -239,6 +239,11 @@ print('****************************************************** Non-Capturing grou
 # Sometime we want to find a pattern on the basis of other patter .for exaple you want to fine patter A on the basis of patte B but you don not 
 # want to include patter B in result that is non capturing group basically we are not caputuring patte B we just taking hlep from B to find A.
 
+#it's treated as a group for the purpose of applying quantifiers (?, *, +, etc.).but it won't capture the matched text separately.
+# when the regular expression engine encounters a non-capturing group, it still considers the group for matching purposes, but it doesn't save the matched text separately
+# This is useful when you want to group parts of your pattern for quantification or alternation but don't need to capture them as separate entities in the output.
+
+
 
 text = "Mr. John Doe (123) 456-7890 ,  Mr. vikesh das (123) 456-7890   , (123) 456-7890"
 
@@ -310,3 +315,18 @@ print("*************************************************************************
 # The match() function only checks if the RE matches at the beginning of the string while search() will scan forward through
 # the string for a match. It’s important to keep this distinction in mind. Remember, match() will only report a successful
 # match which will start at 0; if the match wouldn’t start at zero, match() will not report it.
+
+# text="hello world vikesh grivika retro"
+
+# p = re.compile(r'\bvik\w+.\w+')
+# f=p.findall("vikash.py hello world vikesh grivika retro vikey.txt")
+# print("ans",f)
+text = "ki vikash.py hello \n world vikesh grivika retro vikey.txt yntm"
+
+p = re.compile(r'(\bvik\w*)(\.\w+)?')
+matches = p.findall(text)
+print("matches",matches)
+
+p = re.compile(r'\b\w*vik\w*')
+matches = p.findall(text)
+print("matches",matches)
