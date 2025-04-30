@@ -389,4 +389,52 @@ print(neg_nan_float)
 # Python defines pow(0, 0) and 0 ** 0 to be 1, as is common for programming languages
 # The numeric literals accepted include the digits 0 to 9 or any Unicode equivalent (code points with the Nd property).
 
+# float also accepts the strings “nan” and “inf” with an optional prefix “+” or “-” for Not a Number (NaN)
+# and positive or negative infinit
 
+
+# both integers (int) and floating-point numbers (float) support certain operations in common, as they 
+# are both considered subtypes of the numbers.Real abstract base class in Python.below are common method for 
+# int and float
+import math
+# trucate jut remove the decimal part
+print(math.trunc(-4.92)) # -4
+
+# returns the largest integer less than or equal to x
+print(math.floor(-4.92)) #-5
+
+# roudof a integer till 3 decimla place
+print(round(4.92514789325,3)) # 4.925
+
+print("**********************************************Bitwise Operations on Integer Types********************************************")
+# Bitwise operations only make sense for integers.he priorities of the binary bitwise operations are all lower than the numeric 
+# operations and higher than the comparisons; the unary operation ~ has the same priority as the other unary numeric operations (+ and -)
+
+x=3
+n=4
+print(x << n) # ->x shifted left by n bits
+print(x >> n) #x shifted right by n bits
+
+# Negative shift counts are illegal and cause a ValueError to be raised
+# for exmaple print(x >> -3)
+
+# A left shift by n bits is equivalent to multiplication by pow(2, n)
+# A right shift by n bits is equivalent to floor division by pow(2, n)
+
+print('---------------------------------------------------  int.bit_length() ------------------------------------------------------------')
+# Return the number of bits necessary to represent an integer in binary, excluding the sign and leading zeros:
+x=-37
+print(bin(x))
+print(x.bit_length())
+# if x is nonzero, then x.bit_length() is the unique positive integer k  such that 2**(k-1) <= abs(x) < 2**k
+
+print('-------------------------------------------------------- int.bit_count() ----------------------------------------------------------')
+# Return the number of ones in the binary representation of the absolute value of the integer. This is also known as the population count. Example
+n=19
+
+print(bin(n))
+print(n.bit_count())
+
+
+
+    print("sorted",sorted("vikesh"))
