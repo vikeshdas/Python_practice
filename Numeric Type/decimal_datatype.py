@@ -45,3 +45,24 @@ with decimal.localcontext() as ctx:
 Arithmetic operation with decimal
 """
 print(Decimal(-135//4))
+
+
+"""
+0.1 inside Decimla treating as a float.
+"""
+d = Decimal(0.1)
+print(d) #0.1000000000000000055511151231257827021181583404541015625
+
+# cunstructing from string
+d = Decimal('0.1')   #ouput 0.1
+print(d)
+
+"""
+decimal takes more memory then floats and its slower then float
+"""
+import sys
+
+a=3.1425
+b=Decimal('3.1525')
+
+print(f"size of float: {sys.getsizeof(a)}, size of decimal:{sys.getsizeof(b)}")
