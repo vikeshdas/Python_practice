@@ -272,3 +272,25 @@ class Person:
 obj = Person('vikesh', "das")
 res=obj.debug()
 print(res)
+
+"""
+clouser
+"""
+def timing_decorator(func):
+    import time
+    
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)  # Closure remembers 'func'
+        end_time = time.time()
+        print(f"Function {func.__name__} took {end_time - start_time:.4f} seconds")
+        return result
+    
+    return wrapper
+
+@timing_decorator
+def calculate_sum(n):
+    return sum(range(n))
+
+# Test it
+print(calculate_sum(1000000))
